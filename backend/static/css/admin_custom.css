@@ -1,0 +1,458 @@
+/* ============================================
+   Kanji Capital Admin – Custom Overrides
+   ============================================ */
+
+/* ---------- Sidebar Logo – Big & Prominent ---------- */
+/* Target the logo in the sidebar header area */
+aside a > img,
+aside header img,
+aside [class*="flex"] > a > img,
+nav a > img[src*="logo"],
+.lg\:w-72 a img,
+.w-72 a img,
+[class*="sidebar"] a img[src*="logo"] {
+    max-height: 72px !important;
+    height: 72px !important;
+    width: auto !important;
+    max-width: 220px !important;
+    object-fit: contain !important;
+    padding: 6px 0 !important;
+    margin: 0 auto !important;
+}
+
+/* Make the sidebar logo container wider */
+aside > div:first-child,
+aside header,
+aside [class*="flex"]:first-child {
+    padding: 16px 12px !important;
+    min-height: 90px !important;
+}
+
+/* ---------- Login Page – Big Logo ---------- */
+form img[src*="logo"],
+[class*="login"] img[src*="logo"] {
+    max-height: 80px !important;
+    height: 80px !important;
+    width: auto !important;
+    object-fit: contain !important;
+}
+
+/* ---------- Brand Color Variables ---------- */
+:root {
+    --kci-gold: #c2a990;
+    --kci-gold-light: #dfc1a2;
+    --kci-dark: #1a1a2e;
+    --kci-dark-card: #222240;
+    --kci-text: #e8e8f0;
+}
+
+/* ---------- Page Header / Breadcrumbs ---------- */
+header h1,
+[class*="header"] h1,
+.breadcrumbs + h1 {
+    font-size: 1.5rem !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.01em;
+}
+
+/* ---------- Sidebar Polish ---------- */
+aside,
+.lg\:w-72,
+[class*="sidebar"] {
+    border-right: 1px solid rgba(194, 169, 144, 0.1) !important;
+}
+
+/* Sidebar section headers */
+aside .font-semibold,
+aside [class*="separator"],
+[class*="sidebar"] .font-semibold,
+[class*="sidebar"] .text-xs.font-semibold {
+    letter-spacing: 0.08em !important;
+    text-transform: uppercase !important;
+    font-size: 0.65rem !important;
+    opacity: 0.5;
+    margin-top: 8px !important;
+    padding-left: 12px !important;
+}
+
+/* ---------- Table List View - PROFESSIONAL TABLE ALIGNMENT ---------- */
+/* Restoring native table behavior for perfect column/data alignment */
+
+/* Force the container to be a real table */
+.changelist-items table,
+#result_list {
+    display: table !important;
+    width: 100% !important;
+    table-layout: auto !important;
+    border-collapse: collapse !important;
+    margin: 0 !important;
+}
+
+/* Force header and body to be table groups */
+.changelist-items thead, #result_list thead { display: table-header-group !important; }
+.changelist-items tbody, #result_list tbody { display: table-row-group !important; }
+
+/* Force rows to be table-rows */
+.changelist-items tr, #result_list tr {
+    display: table-row !important;
+    background: transparent !important;
+}
+
+/* Force cells to be table-cells for perfect vertical alignment */
+.changelist-items th,
+.changelist-items td,
+#result_list th,
+#result_list td {
+    display: table-cell !important;
+    padding: 14px 16px !important;
+    vertical-align: middle !important;
+    text-align: left !important;
+    white-space: nowrap !important;
+    border-bottom: 1px solid rgba(194, 169, 144, 0.1) !important;
+    width: auto !important; /* Let browser decide proportional width */
+}
+
+/* Specific width for the checkbox column */
+.changelist-items th.action-checkbox-column,
+.changelist-items td.action-checkbox,
+#result_list .action-checkbox {
+    width: 40px !important;
+    min-width: 40px !important;
+    text-align: center !important;
+}
+
+/* Hide Unfold's responsive mobile labels */
+.changelist-items td b,
+.changelist-items td .font-semibold,
+[class*="unfold-label"],
+[class*="card-label"] {
+    display: none !important;
+}
+
+/* Ensure the status/type badges are properly centered in their cells */
+.changelist-items td span {
+    display: inline-flex !important;
+}
+
+/* Remove hover effects that might shift layout */
+.changelist-items tr:hover td {
+    background-color: rgba(194, 169, 144, 0.04) !important;
+}
+
+/* ---------- Primary Action Buttons (Add +, Save, etc.) ---------- */
+a[class*="bg-primary"],
+button[class*="bg-primary"],
+input[type="submit"][class*="bg-primary"] {
+    transition: all 0.2s ease !important;
+    box-shadow: 0 2px 10px rgba(194, 169, 144, 0.2) !important;
+    border-radius: 10px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.02em;
+}
+
+a[class*="bg-primary"]:hover,
+button[class*="bg-primary"]:hover {
+    transform: translateY(-1px) !important;
+    box-shadow: 0 6px 20px rgba(194, 169, 144, 0.3) !important;
+}
+
+/* Circular floating add button */
+a[class*="rounded-full"][class*="bg-primary"] {
+    width: 48px !important;
+    height: 48px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-shadow: 0 4px 16px rgba(194, 169, 144, 0.35) !important;
+    transition: all 0.2s ease !important;
+}
+
+a[class*="rounded-full"][class*="bg-primary"]:hover {
+    transform: translateY(-2px) scale(1.05) !important;
+    box-shadow: 0 8px 24px rgba(194, 169, 144, 0.4) !important;
+}
+
+/* ---------- Form Inputs ---------- */
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="url"],
+input[type="password"],
+textarea,
+select {
+    border-radius: 8px !important;
+    transition: all 0.2s ease !important;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none !important;
+    border-color: rgba(194, 169, 144, 0.5) !important;
+    box-shadow: 0 0 0 3px rgba(194, 169, 144, 0.1) !important;
+}
+
+/* ---------- Tab Navigation (Fieldset Tabs) ---------- */
+[role="tablist"] button,
+[class*="tab"] a,
+[class*="tab"] button {
+    font-weight: 600 !important;
+    font-size: 0.82rem !important;
+    letter-spacing: 0.02em;
+    padding: 8px 20px !important;
+    border-radius: 8px 8px 0 0 !important;
+    transition: all 0.15s ease !important;
+    cursor: pointer !important; /* Force pointer cursor */
+}
+
+/* Ensure active tab doesn't show cancel sign */
+[role="tablist"] button[aria-selected="true"],
+[class*="tab"] button[aria-selected="true"],
+.tab-active {
+    cursor: default !important;
+}
+
+/* Fix cursor on readonly fields (prevent cancel sign) */
+.readonly,
+[class*="readonly"],
+input[readonly],
+textarea[readonly] {
+    cursor: text !important;
+}
+
+/* ---------- Search Bar ---------- */
+input[type="search"],
+input[name="q"],
+[class*="search"] input {
+    border-radius: 10px !important;
+    padding: 10px 16px !important;
+    font-size: 0.88rem !important;
+}
+
+/* ---------- Filter Sidebar / Drawer ---------- */
+[class*="filter"] {
+    border-radius: 12px !important;
+}
+
+/* Filter submit button */
+[class*="filter"] button[type="submit"],
+[class*="filter"] input[type="submit"] {
+    border-radius: 8px !important;
+    font-weight: 600 !important;
+}
+
+/* ---------- Cards & Module Panels ---------- */
+.module,
+[class*="card"],
+[class*="rounded-xl"],
+[class*="shadow"] {
+    border-radius: 14px !important;
+    transition: box-shadow 0.2s ease;
+}
+
+/* ---------- Top Save Action Bar (Custom) ---------- */
+.templates-admin-change_form .bg-primary-600 {
+    box-shadow: 0 4px 12px rgba(194, 169, 144, 0.4) !important;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.templates-admin-change_form .bg-primary-600:hover {
+    transform: translateY(-2px) scale(1.02) !important;
+    box-shadow: 0 8px 20px rgba(194, 169, 144, 0.5) !important;
+    filter: brightness(1.1) !important;
+}
+
+/* ---------- Date Hierarchy ---------- */
+[class*="date-hierarchy"],
+.xfull nav {
+    font-size: 0.82rem !important;
+    margin-bottom: 8px !important;
+}
+
+/* ---------- Pagination ---------- */
+.paginator,
+[class*="pagination"] {
+    padding: 16px 0 !important;
+}
+
+.paginator a,
+[class*="pagination"] a {
+    border-radius: 8px !important;
+    padding: 6px 14px !important;
+    transition: background 0.12s ease;
+}
+
+/* ---------- Breadcrumb ---------- */
+nav[aria-label="breadcrumb"],
+[class*="breadcrumb"] {
+    font-size: 0.82rem;
+    opacity: 0.8;
+}
+
+/* ---------- Environment Badge (top right D) ---------- */
+[class*="environment"],
+.environment-badge {
+    font-weight: 700 !important;
+    font-size: 0.72rem !important;
+    border-radius: 999px !important;
+    padding: 4px 14px !important;
+}
+
+/* ---------- Fieldset Legend / Section Headers ---------- */
+fieldset legend,
+fieldset h2,
+[class*="fieldset"] h2 {
+    font-weight: 700 !important;
+    font-size: 1rem !important;
+    letter-spacing: 0.01em;
+    margin-bottom: 8px !important;
+}
+
+/* Fieldset description text */
+fieldset .description,
+fieldset .help,
+[class*="fieldset"] p {
+    font-size: 0.82rem !important;
+    opacity: 0.65;
+    margin-bottom: 12px !important;
+}
+
+/* ---------- Read-only fields ---------- */
+.readonly,
+[class*="readonly"] {
+    opacity: 0.65;
+    font-style: italic;
+}
+
+/* ---------- Inline Fieldset Pairs (side by side fields) ---------- */
+.form-row,
+[class*="form-row"] {
+    margin-bottom: 4px !important;
+}
+
+/* ---------- Smooth Page Content Transition ---------- */
+main,
+[class*="content"],
+#content {
+    animation: fadeSlideIn 0.22s ease-out;
+}
+
+@keyframes fadeSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ---------- Material Icons Polish ---------- */
+.material-symbols-outlined {
+    transition: transform 0.12s ease, color 0.12s ease;
+    font-size: 20px !important;
+}
+
+a:hover .material-symbols-outlined {
+    transform: scale(1.1);
+}
+
+/* ---------- Footer ---------- */
+footer {
+    border-top: 1px solid rgba(194, 169, 144, 0.08) !important;
+    font-size: 0.72rem !important;
+    opacity: 0.5;
+    padding: 12px 24px !important;
+}
+
+/* ---------- User Avatar / Profile at Bottom ---------- */
+aside [class*="bottom"],
+aside footer,
+aside > div:last-child {
+    border-top: 1px solid rgba(194, 169, 144, 0.1) !important;
+}
+
+/* ---------- Empty State ---------- */
+[class*="empty"],
+.empty-state {
+    text-align: center;
+    padding: 48px 16px !important;
+    opacity: 0.5;
+    font-size: 0.92rem;
+}
+
+/* ---------- Responsive Adjustments ---------- */
+@media (max-width: 1024px) {
+    aside a > img,
+    aside header img,
+    [class*="sidebar"] a img[src*="logo"] {
+        max-height: 48px !important;
+        height: 48px !important;
+    }
+
+    aside > div:first-child,
+    aside header {
+        min-height: 64px !important;
+        padding: 10px 8px !important;
+    }
+}
+
+/* ---------- Sidebar Badges ---------- */
+/* Hide badges if the count is empty or zero */
+aside [class*="badge"]:empty,
+aside [class*="badge"]:blank,
+aside span:empty {
+    display: none !important;
+}
+
+/* Base styling for badges (using a vibrant but professional gold/pink tone) */
+aside [class*="badge"] {
+    background-color: #fce7f3 !important; /* Soft Pink background */
+    color: #9d174d !important; /* Deep Pink text */
+    padding: 2px 8px !important;
+    border-radius: 6px !important;
+    font-size: 0.65rem !important;
+    font-weight: 700 !important;
+    line-height: 1 !important;
+    min-width: 20px !important;
+    text-align: center !important;
+    border: 1px solid rgba(157, 23, 77, 0.1) !important;
+}
+
+/* ---------- Scrollbar Styling ---------- */
+aside::-webkit-scrollbar,
+[class*="sidebar"]::-webkit-scrollbar {
+    width: 4px;
+}
+
+aside::-webkit-scrollbar-thumb,
+[class*="sidebar"]::-webkit-scrollbar-thumb {
+    background: rgba(194, 169, 144, 0.25);
+    border-radius: 4px;
+}
+
+aside::-webkit-scrollbar-track,
+[class*="sidebar"]::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* ---------- Streamline Save Actions ---------- */
+/* Hide 'Save and add another' and 'Save and continue editing' buttons for a cleaner UI */
+input[name="_addanother"],
+button[name="_addanother"],
+input[name="_continue"],
+button[name="_continue"],
+.submit-row input[name="_addanother"],
+.submit-row button[name="_addanother"],
+.submit-row input[name="_continue"],
+.submit-row button[name="_continue"],
+.submit-row button:not([name="_save"]) {
+    display: none !important;
+}
+
+/* Ensure the primary Save button is prominent */
+input[name="_save"],
+button[name="_save"] {
+    font-weight: 700 !important;
+}

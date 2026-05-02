@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+:root {
+  --gold: #B8963E;
+  --gold-light: #D4AF6A;
+  --gold-dark: #8B6E2A;
+  --cream: #FAF8F4;
+  --dark: #0F0F0F;
+  --dark-2: #1A1A1A;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-inter), sans-serif;
+  background: #ffffff;
+  color: #0F0F0F;
+}
+
+.font-cardo {
+  font-family: var(--font-cardo), serif;
+}
+
+.font-inter {
+  font-family: var(--font-inter), sans-serif;
+}
+
+@layer utilities {
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+  .backface-hidden {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+  .rotate-y-180 {
+    transform: rotateY(180deg);
+  }
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(156, 124, 61, 0.3);
+  border-radius: 10px;
+}
+
