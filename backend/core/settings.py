@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'django_filters',
     'corsheaders',
+    'storages',
     'api',
 ]
 
@@ -135,10 +136,65 @@ STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
 STATIC_ROOT = BASE_DIR / 'staticfiles'
+# Static files storage is set inside the STORAGES dict below when S3 is
+# enabled; this line keeps the whitenoise default for non-S3 environments.
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+# ---------------------------------------------------------------------------
+# Media / File Storage — S3 + CloudFront
+# ---------------------------------------------------------------------------
+# When AWS credentials are configured, files are uploaded directly to S3
+# and all image URLs are rewritten through CloudFront (CDN gateway).
+# If credentials are absent the app falls back to local media storage so
+# development still works without AWS.
+# ---------------------------------------------------------------------------
+
+AWS_ACCESS_KEY_ID       = os.environ.get('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY   = os.environ.get('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = os.environ.get('S3_BUCKET_NAME', 'kci-media')
+AWS_S3_REGION_NAME      = os.environ.get('AWS_REGION', 'us-east-2')
+CLOUDFRONT_BASE_URL     = os.environ.get('CLOUDFRONT_BASE_URL', '')
+
+if AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY and AWS_STORAGE_BUCKET_NAME:
+    # ── S3 bucket settings ────────────────────────────────────────────────
+    AWS_S3_FILE_OVERWRITE        = False          # keep original filenames unique
+    AWS_DEFAULT_ACL              = None           # bucket policy controls access
+    AWS_S3_OBJECT_PARAMETERS     = {'CacheControl': 'max-age=86400'}
+    AWS_QUERYSTRING_AUTH         = False          # public reads via CloudFront
+
+    # ── Storage backends ──────────────────────────────────────────────────
+    STORAGES = {
+        'default': {
+            'BACKEND': 'storages.backends.s3boto3.S3Boto3Storage',
+            'OPTIONS': {
+                'bucket_name':   AWS_STORAGE_BUCKET_NAME,
+                'region_name':   AWS_S3_REGION_NAME,
+                'access_key':    AWS_ACCESS_KEY_ID,
+                'secret_key':    AWS_SECRET_ACCESS_KEY,
+                'file_overwrite': False,
+                'default_acl':   None,
+            },
+        },
+        'staticfiles': {
+            'BACKEND': 'whitenoise.storage.CompressedManifestStaticFilesStorage',
+        },
+    }
+
+    # ── Media URLs served via CloudFront ──────────────────────────────────
+    if CLOUDFRONT_BASE_URL:
+        # All ImageField / FileField .url values will be rewritten to:
+        #   https://<cloudfront-domain>/<s3-key>
+        MEDIA_URL = CLOUDFRONT_BASE_URL.rstrip('/') + '/'
+    else:
+        # Fall back to direct S3 URL if CloudFront isn't configured
+        MEDIA_URL = f'https://{AWS_STORAGE_BUCKET_NAME}.s3.{AWS_S3_REGION_NAME}.amazonaws.com/'
+
+    MEDIA_ROOT = ''  # not used when storing in S3
+
+else:
+    # ── Local fallback (development without AWS) ──────────────────────────
+    MEDIA_URL  = '/media/'
+    MEDIA_ROOT = BASE_DIR / 'media'
 
 # Unfold settings
 from django.templatetags.static import static

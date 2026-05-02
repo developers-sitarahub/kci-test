@@ -12,3 +12,5 @@ dj-database-url
 psycopg2-binary
 python-dotenv
 Pillow
+boto3
+django-storages[s3]
