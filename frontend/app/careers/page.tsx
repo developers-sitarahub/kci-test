@@ -15,18 +15,48 @@ export default function CareersPage() {
     e.preventDefault();
     setStatus('loading');
     try {
-      const data = new FormData();
-      data.append('name', formData.name);
-      data.append('email', formData.email);
-      data.append('phone', formData.phone);
-      data.append('notes', formData.notes);
+      let resumeKey: string | null = null;
+
+      // ── Step 1: upload resume directly to S3 via presigned URL ────────────
       if (resumeFile) {
-        data.append('resume', resumeFile);
+        const presignRes = await fetch(
+          `${process.env.NEXT_PUBLIC_API_URL}/web-services/upload/presign/`,
+          {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              folder:       'resumes',
+              filename:     resumeFile.name,
+              content_type: resumeFile.type || 'application/pdf',
+            }),
+          }
+        );
+        if (!presignRes.ok) throw new Error('Failed to get upload URL');
+        const { upload_url, s3_key } = await presignRes.json();
+
+        // PUT directly to S3 — Django is bypassed entirely
+        const s3Res = await fetch(upload_url, {
+          method:  'PUT',
+          headers: { 'Content-Type': resumeFile.type || 'application/pdf' },
+          body:    resumeFile,
+        });
+        if (!s3Res.ok) throw new Error('S3 upload failed');
+        resumeKey = s3_key;
       }
 
+      // ── Step 2: post only text fields + the S3 key to Django ────────────
+      const payload: Record<string, string> = {
+        name:  formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        notes: formData.notes,
+      };
+      if (resumeKey) payload.resume = resumeKey;
+
       const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/web-services/careers/`, {
-        method: 'POST',
-        body: data,
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body:    JSON.stringify(payload),
       });
 
       if (!res.ok) throw new Error('Network response was not ok');

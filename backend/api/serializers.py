@@ -73,7 +73,29 @@ class ContactSerializer(serializers.ModelSerializer):
 
 
 class CareerApplicationSerializer(serializers.ModelSerializer):
+    """
+    `resume` can be submitted two ways:
+    - Multipart file (Django Admin / legacy) → handled by CloudFrontFileField
+    - Plain S3 key string (presigned-upload flow) → accepted as a char field and
+      stored directly; CloudFrontFileField.to_representation still rewrites it to
+      the CDN URL on read.
+    """
     resume = CloudFrontFileField(required=False, allow_null=True)
+
+    def to_internal_value(self, data):
+        # If the client sent a plain string for 'resume' (the S3 key from
+        # the presigned upload), treat it as the file name / path directly
+        # rather than trying to parse it as an uploaded file.
+        resume_val = data.get('resume', None)
+        if isinstance(resume_val, str) and resume_val:
+            # Remove resume from data so the parent doesn't try to parse it
+            # as a file, then re-inject after parent runs.
+            mutable = data.copy() if hasattr(data, 'copy') else dict(data)
+            mutable.pop('resume', None)
+            ret = super().to_internal_value(mutable)
+            ret['resume'] = resume_val  # store the raw S3 key
+            return ret
+        return super().to_internal_value(data)
 
     class Meta:
         model = CareerApplication
