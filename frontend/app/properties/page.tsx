@@ -22,7 +22,6 @@ export default function Properties() {
             alt="Houston properties"
             fill
             className="object-cover opacity-20 grayscale"
-            unoptimized
           />
           <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/60 to-transparent" />
         </div>
@@ -55,7 +54,6 @@ export default function Properties() {
                   alt="Property For Lease"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
-                  unoptimized
                 />
                 <div className="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors" />
                 <div className="absolute top-6 left-6 w-14 h-14 rounded-full bg-white shadow-lg flex items-center justify-center text-[#9c7c3d]">
@@ -83,7 +81,6 @@ export default function Properties() {
                   alt="Property For Sale"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
-                  unoptimized
                 />
                 <div className="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors" />
                 <div className="absolute top-6 left-6 w-14 h-14 rounded-full bg-white shadow-lg flex items-center justify-center text-[#9c7c3d]">

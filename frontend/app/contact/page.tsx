@@ -99,7 +99,6 @@ export default function Contact() {
                 alt="Kanji Capital Investments – Building Dreams, Investing in Futures"
                 fill
                 className="object-cover"
-                unoptimized
               />
             </div>
           </motion.div>

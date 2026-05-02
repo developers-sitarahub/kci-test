@@ -36,7 +36,6 @@ export default function PropertyCard({ prop, onInquire, typeBadge }: PropertyCar
                 src={prop.image || "/images/building_1.png"} 
                 alt={prop.title} 
                 fill 
-                unoptimized 
                 className={`object-cover ${prop.description ? 'group-hover:scale-105' : ''} transition-transform duration-700`} 
               />
               <div className="absolute top-4 right-4 bg-slate-900/90 backdrop-blur text-[10px] font-bold px-3 py-1.5 rounded-full text-white shadow-sm uppercase tracking-wider">

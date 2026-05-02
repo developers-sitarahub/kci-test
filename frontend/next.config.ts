@@ -10,6 +10,18 @@ const nextConfig: NextConfig = {
         hostname: 'kanjicapitalinvestments.com',
       },
       {
+        protocol: 'https',
+        hostname: 'd193v9m7vnr083.cloudfront.net',
+      },
+      {
+        protocol: 'https',
+        hostname: 'kci-media.s3.us-east-2.amazonaws.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'kci-media.s3.amazonaws.com',
+      },
+      {
         protocol: 'http',
         hostname: '127.0.0.1',
         port: '8000',

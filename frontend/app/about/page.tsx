@@ -320,7 +320,6 @@ export default function AboutPage() {
                           alt={t.name}
                           fill
                           className="object-contain filter grayscale group-hover:grayscale-0 transition-all duration-500"
-                          unoptimized
                         />
                       </div>
                     </motion.div>

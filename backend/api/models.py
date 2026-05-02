@@ -93,8 +93,8 @@ class Inquiry(models.Model):
 
 class InvestedProject(models.Model):
     title = models.CharField(max_length=255)
-    location = models.CharField(max_length=255)
-    image = models.ImageField(upload_to='invested_projects/', blank=True, null=True)
+    location = models.CharField(max_length=255, blank=True, null=True)
+    image = models.ImageField(upload_to='invested_projects/')
     description = models.TextField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

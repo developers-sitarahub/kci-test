@@ -47,7 +47,6 @@ export default function ProjectsInvestedIn() {
             alt="Houston skyline"
             fill
             className="object-cover opacity-20"
-            unoptimized
           />
           <div className="absolute inset-0 bg-gradient-to-b from-gray-900 via-gray-900/90 to-gray-900" />
         </div>
@@ -123,7 +122,6 @@ export default function ProjectsInvestedIn() {
                     alt={p.title}
                     fill
                     className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
-                    unoptimized
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
 
@@ -139,10 +137,12 @@ export default function ProjectsInvestedIn() {
 
                 <div className="p-5 flex flex-col flex-1">
                   <h3 className="text-base font-bold text-gray-900 mb-2 group-hover:text-[#9c7c3d] transition-colors leading-snug">{p.title}</h3>
-                  <div className="flex items-center gap-1.5 text-xs text-gray-500 mt-auto">
-                    <MapPin size={12} className="text-[#9c7c3d]" />
-                    {p.location}
-                  </div>
+                  {p.location && (
+                    <div className="flex items-center gap-1.5 text-xs text-gray-500 mt-auto">
+                      <MapPin size={12} className="text-[#9c7c3d]" />
+                      {p.location}
+                    </div>
+                  )}
                 </div>
               </motion.div>
             ))}
@@ -178,7 +178,6 @@ export default function ProjectsInvestedIn() {
                 alt="Full size project view"
                 fill
                 className="object-contain"
-                unoptimized
               />
             </motion.div>
           </motion.div>

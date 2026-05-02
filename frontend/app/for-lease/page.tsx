@@ -107,7 +107,6 @@ export default function ForLeasePage() {
                       src={prop.image || "/images/building_2.png"}
                       alt={prop.title}
                       fill
-                      unoptimized
                       className="object-cover hover:scale-105 transition-transform duration-500"
                     />
                   </div>

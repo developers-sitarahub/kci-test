@@ -91,7 +91,6 @@ export default function Footer() {
                 alt="KCI"
                 width={160}
                 height={50}
-                unoptimized
                 style={{ height: 'auto' }}
               />
             </Link>

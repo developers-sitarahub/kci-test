@@ -108,7 +108,6 @@ export default function ForSalePage() {
                       src={prop.image || "/images/building_1.png"}
                       alt={prop.title}
                       fill
-                      unoptimized
                       className="object-cover hover:scale-105 transition-transform duration-500"
                     />
                   </div>

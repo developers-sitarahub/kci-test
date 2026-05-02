@@ -48,7 +48,6 @@ export default function Home() {
           fill
           className="object-cover object-center"
           priority
-          unoptimized
           sizes="100vw"
         />
         {/* gradient overlay */}
@@ -152,7 +151,7 @@ export default function Home() {
                 }}
                 viewport={{ once: true }}
                 className="relative w-[42%] h-28 sm:w-[30%] sm:h-36 md:w-[28%] md:h-44 lg:h-48 flex items-center justify-center">
-                <Image src={t.logo} alt={t.name} fill className="object-contain" sizes="(max-width: 1366px) 300px, 0px" unoptimized />
+                <Image src={t.logo} alt={t.name} fill className="object-contain" sizes="(max-width: 1366px) 300px, 0px" />
               </motion.div>
             ))}
           </div>
@@ -174,7 +173,7 @@ export default function Home() {
                 }}
                 viewport={{ once: true }}
                 className="relative w-auto h-[220px] xl:h-[280px] flex-1 flex items-center justify-center transition-transform duration(500) hover:scale-105">
-                <Image src={t.logo} alt={t.name} fill className="object-contain" sizes="300px" unoptimized />
+                <Image src={t.logo} alt={t.name} fill className="object-contain" sizes="300px" />
               </motion.div>
             ))}
           </div>
