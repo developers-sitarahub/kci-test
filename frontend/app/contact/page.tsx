@@ -95,7 +95,7 @@ export default function Contact() {
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={1}>
             <div className="relative w-full aspect-[3/4] rounded-xl overflow-hidden shadow-md">
               <Image
-                src="https://kanjicapitalinvestments.com/wp-content/uploads/2024/05/kanji-properties-banner-5000-x-1000-px-2.png"
+                src="5-2.png"
                 alt="Kanji Capital Investments – Building Dreams, Investing in Futures"
                 fill
                 className="object-cover"

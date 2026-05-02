@@ -51,7 +51,7 @@ export default function Properties() {
             <Link href="/for-lease" className="group flex flex-col bg-white rounded-[2rem] overflow-hidden shadow-sm hover:shadow-2xl border border-gray-100 transition-all duration-500 hover:-translate-y-2 h-full">
               <div className="relative w-full aspect-[4/3] overflow-hidden">
                 <Image
-                  src="https://kanjicapitalinvestments.com/wp-content/uploads/2025/01/kanji-capitlal-jk1b.png"
+                  src="for.png"
                   alt="Property For Lease"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
@@ -79,7 +79,7 @@ export default function Properties() {
             <Link href="/for-sale" className="group flex flex-col bg-white rounded-[2rem] overflow-hidden shadow-sm hover:shadow-2xl border border-gray-100 transition-all duration-500 hover:-translate-y-2 h-full">
               <div className="relative w-full aspect-[4/3] overflow-hidden">
                 <Image
-                  src="https://kanjicapitalinvestments.com/wp-content/uploads/2025/01/kanji-capitlal-jk1b.png"
+                  src="for-sale.jpg"
                   alt="Property For Sale"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
