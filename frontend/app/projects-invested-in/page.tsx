@@ -43,7 +43,7 @@ export default function ProjectsInvestedIn() {
       <section className="relative w-full py-24 md:py-32 flex items-center justify-center overflow-hidden bg-gray-900 border-b-8 border-[#9c7c3d]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="5-2.png"
+            src="/5-2.png"
             alt="Houston skyline"
             fill
             className="object-cover opacity-20"

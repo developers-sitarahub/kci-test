@@ -18,7 +18,7 @@ export default function Properties() {
       <section className="relative w-full py-24 md:py-32 flex items-center justify-center overflow-hidden bg-gray-900 border-b-[6px] border-[#9c7c3d]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="5-2.png"
+            src="/5-2.png"
             alt="Houston properties"
             fill
             className="object-cover opacity-20 grayscale"
@@ -50,7 +50,7 @@ export default function Properties() {
             <Link href="/for-lease" className="group flex flex-col bg-white rounded-[2rem] overflow-hidden shadow-sm hover:shadow-2xl border border-gray-100 transition-all duration-500 hover:-translate-y-2 h-full">
               <div className="relative w-full aspect-[4/3] overflow-hidden">
                 <Image
-                  src="for.png"
+                  src="/for.png"
                   alt="Property For Lease"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
@@ -77,7 +77,7 @@ export default function Properties() {
             <Link href="/for-sale" className="group flex flex-col bg-white rounded-[2rem] overflow-hidden shadow-sm hover:shadow-2xl border border-gray-100 transition-all duration-500 hover:-translate-y-2 h-full">
               <div className="relative w-full aspect-[4/3] overflow-hidden">
                 <Image
-                  src="for-sale.jpg"
+                  src="/for-sale.jpg"
                   alt="Property For Sale"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700"

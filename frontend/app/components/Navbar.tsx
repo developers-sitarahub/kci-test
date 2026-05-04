@@ -39,7 +39,7 @@ export default function Navbar() {
         {/* Logo + Name */}
         <Link href="/" className="flex items-center gap-3 flex-shrink-0">
           <Image
-            src="logo.png"
+            src="/logo.png"
             alt="KCI"
             width={240}
             height={70}

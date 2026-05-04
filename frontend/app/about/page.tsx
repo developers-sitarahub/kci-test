@@ -319,7 +319,7 @@ export default function AboutPage() {
                           src={t.logo}
                           alt={t.name}
                           fill
-                          className="object-contain filter grayscale group-hover:grayscale-0 transition-all duration-500"
+                          className="object-contain transition-all duration-500"
                         />
                       </div>
                     </motion.div>

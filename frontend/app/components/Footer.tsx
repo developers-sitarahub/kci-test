@@ -87,7 +87,7 @@ export default function Footer() {
           <div className="flex flex-col gap-4">
             <Link href="/">
               <Image
-                src="logo.png"
+                src="/logo.png"
                 alt="KCI"
                 width={160}
                 height={50}

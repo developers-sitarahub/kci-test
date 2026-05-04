@@ -43,7 +43,7 @@ export default function Home() {
       {/* ── HERO ── */}
       <section className="relative w-full min-h-[88vh] flex items-center justify-center overflow-hidden">
         <Image
-          src="5-2.png"
+          src="/5-2.png"
           alt="Houston skyline at night"
           fill
           className="object-cover object-center"
@@ -138,15 +138,13 @@ export default function Home() {
           <div className="flex min-[1367px]:hidden flex-wrap justify-center items-center gap-x-4 gap-y-8 sm:gap-10 px-2 lg:px-8">
             {tenants.map((t, i) => (
               <motion.div key={`${t.id}-mob`} custom={i}
-                initial={{ opacity: 0, y: 30, filter: 'grayscale(100%)' }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{
                   opacity: 1,
                   y: 0,
-                  filter: 'grayscale(0%)',
                   transition: {
                     opacity: { duration: 0.6, delay: i * 0.1 },
-                    y: { duration: 0.6, delay: i * 0.1 },
-                    filter: { duration: 0.6, delay: 1.2 + (i * 0.2) }
+                    y: { duration: 0.6, delay: i * 0.1 }
                   }
                 }}
                 viewport={{ once: true }}
@@ -160,15 +158,13 @@ export default function Home() {
           <div className="hidden min-[1367px]:flex flex-nowrap justify-center items-center gap-8">
             {tenants.map((t, i) => (
               <motion.div key={`${t.id}-desk`} custom={i}
-                initial={{ opacity: 0, y: 30, filter: 'grayscale(100%)' }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{
                   opacity: 1,
                   y: 0,
-                  filter: 'grayscale(0%)',
                   transition: {
                     opacity: { duration: 0.6, delay: i * 0.1 },
-                    y: { duration: 0.6, delay: i * 0.1 },
-                    filter: { duration: 0.6, delay: 1.2 + (i * 0.2) }
+                    y: { duration: 0.6, delay: i * 0.1 }
                   }
                 }}
                 viewport={{ once: true }}
